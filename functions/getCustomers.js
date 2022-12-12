@@ -1,5 +1,5 @@
 const { getData } = require("./getData");
-const { excludedCustomers } = require("../excludedCustomers");
+const excludedCustomers = process.env.EXCLUDE_CUSTOMERS;
 
 exports.getCustomers = async () => {
   try {
