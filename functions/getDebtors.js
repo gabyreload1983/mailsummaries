@@ -1,8 +1,7 @@
 "use strict";
+require("dotenv").config();
 const { getCustomers } = require("./getCustomers");
 const { getData } = require("./getData");
-
-const INDEX_DEBTOR = 500;
 
 exports.getDebtors = async () => {
   try {
@@ -14,7 +13,7 @@ exports.getDebtors = async () => {
       const debe = await getData(queryDebe);
       const haber = await getData(queryHaber);
 
-      if (debe[0].balance - haber[0].balance > INDEX_DEBTOR) {
+      if (debe[0].balance - haber[0].balance > process.env.INDEX_DEBTOR) {
         customer.saldo = (debe[0].balance - haber[0].balance).toFixed(0);
       } else {
         customer.saldo = 0;
