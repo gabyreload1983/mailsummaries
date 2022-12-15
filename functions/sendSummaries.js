@@ -11,6 +11,7 @@ exports.sendSummaries = async (debtors) => {
                 <h4>Cliente: ${debtor.nombre}</h4>
                 <p>El <b>saldo</b> de la cuenta es de: <strong>$${debtor.saldo}</strong></p>
                 <p>Se <b>adjunta</b> resumen de cuenta.</p>
+                <p>Cualquier duda o consulta podes responder este mail.</p>
                 <p>Saludos coordiales</p>`;
       const subject = `✔ RESUMEN DE CUENTA - ${debtor.nombre}`;
       const date = new Date().toISOString().slice(0, 10);
@@ -18,11 +19,12 @@ exports.sendSummaries = async (debtors) => {
       await sendMail(customer.mail, body, subject, filePath);
       countMails += 1;
     }
-
     const body = `<h5>Se enviaron ${countMails} mails con sus respectivos saldos.</h5>`;
-    sendMail(process.env.MAIL_INFO, body, "INFO SALDOS CC");
+
+    await sendMail(process.env.MAIL_INFO, body, "INFO SALDOS CC");
   } catch (error) {
     console.log("sendSummaries", error);
-    sendMail(process.env.MAIL_INFO, error.message, "ERROR!!!");
+    await sendMail(process.env.MAIL_INFO, error.message, "ERROR!!!");
+    process.exit(1);
   }
 };
