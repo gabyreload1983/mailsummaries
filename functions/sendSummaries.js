@@ -16,7 +16,7 @@ exports.sendSummaries = async (debtors) => {
       const subject = `✔ RESUMEN DE CUENTA - ${debtor.nombre}`;
       const date = new Date().toISOString().slice(0, 10);
       const filePath = `${process.env.FILE_PATH_PREFIX}${date}-${debtor.codigo}.xlsx`;
-      await sendMail(customer.mail, body, subject, filePath);
+      await sendMail(debtor.mail, body, subject, filePath);
       countMails += 1;
     }
     const body = `<h5>Se enviaron ${countMails} mails con sus respectivos saldos.</h5>`;
