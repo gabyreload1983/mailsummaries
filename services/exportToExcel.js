@@ -28,15 +28,15 @@ const exportToExcel = (
       return [
         voucher.fecha,
         voucher.nrocompro,
-        voucher.importe,
-        voucher.importe,
+        parseFloat(voucher.importe).toFixed(2),
+        parseFloat(voucher.importe).toFixed(2),
         `$${parseFloat(saldo).toFixed(2)}`,
       ];
     if (voucher.tipo === "FV" || voucher.tipo === "RP" || voucher.tipo === "ND")
       return [
         voucher.fecha,
         voucher.nrocompro,
-        `$${voucher.importe}`,
+        `$${parseFloat(voucher.importe).toFixed(2)}`,
         "-",
         `$${(saldo = (parseFloat(saldo) + parseFloat(voucher.importe)).toFixed(
           2
@@ -47,7 +47,7 @@ const exportToExcel = (
         voucher.fecha,
         voucher.nrocompro,
         "-",
-        `$${voucher.importe}`,
+        `$${parseFloat(voucher.importe).toFixed(2)}`,
         `$${(saldo = (parseFloat(saldo) - parseFloat(voucher.importe)).toFixed(
           2
         ))}`,
