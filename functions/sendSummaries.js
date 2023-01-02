@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { sendMail } = require("../services/sendMail");
 
 exports.sendSummaries = async (debtors) => {

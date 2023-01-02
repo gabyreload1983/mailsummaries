@@ -1,5 +1,4 @@
 "use strict";
-require("dotenv").config();
 const { getCustomers } = require("./getCustomers");
 const { getData } = require("./getData");
 

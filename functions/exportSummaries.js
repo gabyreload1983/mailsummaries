@@ -1,4 +1,3 @@
-require("dotenv").config();
 const exportToExcel = require("../services/exportToExcel");
 const { getData } = require("../functions/getData");
 

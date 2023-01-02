@@ -3,27 +3,28 @@
 This is an application that looks for customers with a debit balance.
 Export the account summary to an excel file and then send it by email.
 
-## Complete the .env file with the correct data.
+## Environment variables
 
-### URBANO VARIABLES
+### URBANO_HOST
 
-To connect to a mysql data base
+### URBANO_DB
 
-### MAIL VARIABLES
+### URBANO_PASS
 
-To connect to a smtp server
+### URBANO_USER
 
-### FILE_PATH_PREFIX VARIABLE
+### MAIL_HOST
 
-This is where the excel files are stored
+### MAIL_USER
 
-### INDEX_DEBTOR VARIABLE
+### MAIL_PASSWORD
 
-Minimum debit balance index
+### MAIL_FROM
 
-### EXCLUDE_CUSTOMERS VARIABLE
+### MAIL_INFO
 
-Array with customer codes to exclude
-Example:
+### MAIL_CC
 
-EXCLUDE_CUSTOMERS=["00345","89745"]
+### FILE_PATH_PREFIX
+
+### INDEX_DEBTOR

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { getDebtors } = require("./functions/getDebtors");
 const { exportSummaries } = require("./functions/exportSummaries");
 const { sendSummaries } = require("./functions/sendSummaries");
