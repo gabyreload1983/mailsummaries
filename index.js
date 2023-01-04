@@ -16,7 +16,6 @@ async function app() {
 
     await sendSummaries(debtors);
     console.log(`${new Date().toLocaleString()} - SENDING SUMMARIES COMPLETED`);
-    process.exit(0);
   } catch (error) {
     console.log(error);
     await sendMail(process.env.MAIL_INFO, error.message, "ERROR!!!");
