@@ -5,6 +5,7 @@ const { sendSummaries } = require("./functions/sendSummaries");
 async function app() {
   try {
     console.log(`${new Date().toLocaleString()} - START`);
+    process.env.TESTING && console.log("TESTING");
 
     const debtors = await getDebtors();
     console.log(`${new Date().toLocaleString()} - ${debtors.length} DEBTORS`);
@@ -16,6 +17,7 @@ async function app() {
 
     await sendSummaries(debtors);
     console.log(`${new Date().toLocaleString()} - SENDING SUMMARIES COMPLETED`);
+    process.exit(0);
   } catch (error) {
     console.log(error);
     await sendMail(process.env.MAIL_INFO, error.message, "ERROR!!!");

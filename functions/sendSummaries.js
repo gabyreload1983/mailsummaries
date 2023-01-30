@@ -1,21 +1,16 @@
 const { sendMail } = require("../services/sendMail");
-
+const { getBody } = require("./getBody");
 exports.sendSummaries = async (debtors) => {
   try {
     let countMails = 0;
     for (const debtor of debtors) {
-      const body = `
-                <h3>ESTE ES UN MAIL AUTOMATICO.</h3>
-                <p>Nos comunicamos desde Sinapsis Srl</p>
-                <h4>Cliente: ${debtor.nombre}</h4>
-                <p>El <b>saldo</b> de la cuenta es de: <strong>$${debtor.saldo}</strong></p>
-                <p>Se <b>adjunta</b> resumen de cuenta.</p>
-                <p>Cualquier duda o consulta podes responder este mail.</p>
-                <p>Saludos coordiales</p>`;
+      const body = getBody(debtor);
       const subject = `✔ RESUMEN DE CUENTA - ${debtor.nombre}`;
       const date = new Date().toISOString().slice(0, 10);
       const filePath = `${process.env.FILE_PATH_PREFIX}${date}-${debtor.codigo}.xlsx`;
-      await sendMail(debtor.mail, body, subject, filePath);
+      process.env.TESTING
+        ? await sendMail(process.env.MAIL_TESTING, body, subject, filePath)
+        : await sendMail(debtor.mail, body, subject, filePath);
       countMails += 1;
     }
     const body = `<h5>Se enviaron ${countMails} mails con sus respectivos saldos.</h5>`;
