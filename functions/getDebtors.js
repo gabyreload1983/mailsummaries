@@ -1,4 +1,5 @@
 "use strict";
+const { sendMail } = require("../services/sendMail");
 const { getCustomers } = require("./getCustomers");
 const { getData } = require("./getData");
 
@@ -18,6 +19,27 @@ exports.getDebtors = async () => {
         customer.saldo = 0;
       }
     }
+
+    const withoutMail = customers.filter(
+      (customer) => customer.saldo !== 0 && customer.mail === ""
+    );
+    let body = "";
+    withoutMail.forEach((customer) => {
+      body += `
+      ${customer.codigo} - ${customer.nombre} - 
+      <a target="_blank" href="whatsapp://send/?phone=${customer.telefono}&text=Hola, nos comunicamos de Sinapsis SRL. El saldo de tu cuenta es de $${customer.saldo}">
+        ${customer.telefono}
+      </a>
+      - Saldo: $${customer.saldo}
+      <br/>`;
+    });
+    await sendMail(process.env.MAIL_INFO, body, "DEUDORES SIN MAIL");
+    console.log(
+      `${new Date().toLocaleString()} - SENDING DETAILS OF ${
+        withoutMail?.length
+      } DEBTORS WITHOUTMAIL`
+    );
+
     return customers.filter(
       (customer) => customer.saldo !== 0 && customer.mail
     );

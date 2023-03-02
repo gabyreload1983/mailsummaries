@@ -5,7 +5,8 @@ const { sendSummaries } = require("./functions/sendSummaries");
 async function app() {
   try {
     console.log(`${new Date().toLocaleString()} - START`);
-    process.env.TESTING && console.log("TESTING");
+    process.env.TESTING &&
+      console.log(`${new Date().toLocaleString()} - TESTING`);
 
     const debtors = await getDebtors();
     console.log(`${new Date().toLocaleString()} - ${debtors.length} DEBTORS`);
@@ -15,6 +16,7 @@ async function app() {
       `${new Date().toLocaleString()} - EXPORT EXCEL FILES COMPLETED`
     );
 
+    console.log(`${new Date().toLocaleString()} - SENDING MAILS...`);
     await sendSummaries(debtors);
     console.log(`${new Date().toLocaleString()} - SENDING SUMMARIES COMPLETED`);
     process.exit(0);
