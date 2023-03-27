@@ -23,7 +23,7 @@ exports.getBody = (debtor) => {
       border-collapse: collapse;
       width: 500px;
     "
-    >
+  >
     <tbody>
       <tr>
         <td style="padding: 0px !important">
@@ -111,7 +111,7 @@ exports.getBody = (debtor) => {
                                 width="24"
                                 alt="facebook"
                                 border="0"
-                                src="https://img1.gimm.io/assets/social/96/native/3/facebook.png"
+                                src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
                             /></a>
                           </p>
                         </td>
@@ -127,7 +127,23 @@ exports.getBody = (debtor) => {
                                 width="24"
                                 alt="instagram"
                                 border="0"
-                                src="https://img1.gimm.io/assets/social/96/native/3/instagram.png"
+                                src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                            /></a>
+                          </p>
+                        </td>
+                        <td style="padding-right: 10px">
+                          <p style="margin: 0.04px">
+                            <a
+                              style="font-size: 0px; line-height: 0px"
+                              target="_blank"
+                              rel="nofollow"
+                              href="https://goo.gl/maps/4JfV9WJgf4WjaAoP6"
+                              ><img
+                                height="24"
+                                width="24"
+                                alt="maps"
+                                border="0"
+                                src="https://cdn-icons-png.flaticon.com/512/1865/1865269.png"
                             /></a>
                           </p>
                         </td>
@@ -143,7 +159,7 @@ exports.getBody = (debtor) => {
                                 width="24"
                                 alt="whatsapp"
                                 border="0"
-                                src="https://img1.gimm.io/assets/social/96/native/3/whatsapp.png"
+                                src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png"
                             /></a>
                           </p>
                         </td>
@@ -199,7 +215,7 @@ exports.getBody = (debtor) => {
                                 color: #0482b7;
                                 display: inline;
                               "
-                              >Comprobantes&nbsp;</span
+                              >Administración&nbsp;</span
                             >
                             <span
                               style="
@@ -211,7 +227,7 @@ exports.getBody = (debtor) => {
                                 color: #8b8b8b;
                                 display: inline;
                               "
-                              >Administración&nbsp;</span
+                              >Comprobantes&nbsp;</span
                             >
                           </p>
                         </td>
@@ -259,6 +275,7 @@ exports.getBody = (debtor) => {
                             >
                               <a
                                 href="https://sinapsis.com.ar/"
+                                target="_blank"
                                 style="text-decoration: none"
                               >
                                 sinapsis.com.ar
@@ -388,6 +405,6 @@ exports.getBody = (debtor) => {
         </td>
       </tr>
     </tbody>
-    </table>
-    `;
+  </table>
+  `;
 };
