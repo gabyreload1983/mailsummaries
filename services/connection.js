@@ -1,10 +1,9 @@
-const mysql = require("mysql");
+import mysql from "mysql";
+import config from "../config/config.js";
 
-const connection = mysql.createConnection({
-  host: process.env.URBANO_HOST,
-  database: process.env.URBANO_DB,
-  password: process.env.URBANO_PASS,
-  user: process.env.URBANO_USER,
+export const connection = mysql.createConnection({
+  host: config.URBANO_HOST,
+  database: config.URBANO_DB,
+  password: config.URBANO_PASS,
+  user: config.URBANO_USER,
 });
-
-module.exports = connection;

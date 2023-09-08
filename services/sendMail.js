@@ -1,21 +1,22 @@
 "use strict";
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
+import config from "../config/config.js";
 
 const transporter = nodemailer.createTransport({
-  host: process.env.MAIL_HOST,
+  host: config.MAIL_HOST,
   port: 465,
   secure: true,
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASSWORD,
+    user: config.MAIL_USER,
+    pass: config.MAIL_PASSWORD,
   },
 });
 
-exports.sendMail = (mail, body, subject, filePath = "") => {
+export const sendMail = (mail, body, subject, filePath = "") => {
   return transporter.sendMail({
-    from: process.env.MAIL_FROM,
+    from: config.MAIL_FROM,
     to: mail,
-    cc: process.env.MAIL_CC,
+    cc: config.MAIL_CC,
     subject: subject,
     html: body,
     attachments: {

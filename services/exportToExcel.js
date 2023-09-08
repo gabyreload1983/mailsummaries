@@ -1,16 +1,23 @@
-const xlsx = require("xlsx");
-const path = require("path");
+import xlsx from "xlsx";
+import path from "path";
 
 const exportExcel = (data, workSheetColumnsNames, workSheetName, filePath) => {
   const workBook = xlsx.utils.book_new();
   const workSheetData = [workSheetColumnsNames, ...data];
 
   const workSheet = xlsx.utils.aoa_to_sheet(workSheetData);
+  workSheet["!cols"] = [
+    { wch: 10 },
+    { wch: 20 },
+    { wch: 20 },
+    { wch: 20 },
+    { wch: 20 },
+  ];
   xlsx.utils.book_append_sheet(workBook, workSheet, workSheetName);
   xlsx.writeFile(workBook, path.resolve(filePath));
 };
 
-const exportToExcel = (
+export const exportToExcel = (
   vouchers,
   workSheetColumnsNames,
   workSheetName,
@@ -57,5 +64,3 @@ const exportToExcel = (
 
   exportExcel(partialData, workSheetColumnsNames, workSheetName, filePath);
 };
-
-module.exports = exportToExcel;
