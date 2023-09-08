@@ -1,4 +1,4 @@
-exports.getBody = (debtor) => {
+export const getBody = (debtor) => {
   return `
     <h3>ESTE ES UN MAIL AUTOMATICO.</h3>
     <p>Nos comunicamos desde Sinapsis Srl</p>

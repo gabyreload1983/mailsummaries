@@ -1,9 +1,10 @@
 "use strict";
-const { sendMail } = require("../services/sendMail");
-const { getCustomers } = require("./getCustomers");
-const { getData } = require("./getData");
+import { sendMail } from "../services/sendMail.js";
+import config from "../config/config.js";
+import { getCustomers } from "./getCustomers.js";
+import { getData } from "./getData.js";
 
-exports.getDebtors = async () => {
+export const getDebtors = async () => {
   try {
     const customers = await getCustomers();
 
@@ -13,7 +14,7 @@ exports.getDebtors = async () => {
       const debe = await getData(queryDebe);
       const haber = await getData(queryHaber);
 
-      if (debe[0].balance - haber[0].balance > process.env.INDEX_DEBTOR) {
+      if (debe[0].balance - haber[0].balance > config.INDEX_DEBTOR) {
         customer.saldo = (debe[0].balance - haber[0].balance).toFixed(0);
       } else {
         customer.saldo = 0;
@@ -33,7 +34,7 @@ exports.getDebtors = async () => {
       - Saldo: $${customer.saldo}
       <br/>`;
     });
-    await sendMail(process.env.MAIL_INFO, body, "DEUDORES SIN MAIL");
+    await sendMail(config.MAIL_INFO, body, "DEUDORES SIN MAIL");
     console.log(
       `${new Date().toLocaleString()} - SENDING DETAILS OF ${
         withoutMail?.length

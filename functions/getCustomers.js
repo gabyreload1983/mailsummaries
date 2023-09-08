@@ -1,11 +1,12 @@
-const { getData } = require("./getData");
+import config from "../config/config.js";
+import { getData } from "./getData.js";
 const EXCLUDE_CUSTOMERS = [];
 
-exports.getCustomers = async () => {
+export const getCustomers = async () => {
   try {
     let query = `SELECT * FROM clientes`;
-    if (process.env.TESTING) {
-      query = `SELECT * FROM clientes LIMIT ${process.env.MAIL_LIMIT}`;
+    if (config.TESTING) {
+      query = `SELECT * FROM clientes LIMIT ${config.MAIL_LIMIT}`;
     }
     const customers = await getData(query);
     return customers.filter(

@@ -1,14 +1,17 @@
 {
   "name": "mailsummaries",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Send xlsx file with account summary",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gabriel Godoy",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "mysql": "^2.18.1",
     "nodemailer": "^6.8.0",
     "xlsx": "^0.18.5"

@@ -1,12 +1,12 @@
-const { getDebtors } = require("./functions/getDebtors");
-const { exportSummaries } = require("./functions/exportSummaries");
-const { sendSummaries } = require("./functions/sendSummaries");
+import { getDebtors } from "./functions/getDebtors.js";
+import { exportSummaries } from "./functions/exportSummaries.js";
+import { sendSummaries } from "./functions/sendSummaries.js";
+import config from "./config/config.js";
 
 async function app() {
   try {
     console.log(`${new Date().toLocaleString()} - START`);
-    process.env.TESTING &&
-      console.log(`${new Date().toLocaleString()} - TESTING`);
+    config.TESTING && console.log(`${new Date().toLocaleString()} - TESTING`);
 
     const debtors = await getDebtors();
     console.log(`${new Date().toLocaleString()} - ${debtors.length} DEBTORS`);
@@ -22,7 +22,7 @@ async function app() {
     process.exit(0);
   } catch (error) {
     console.log(error);
-    await sendMail(process.env.MAIL_INFO, error.message, "ERROR!!!");
+    await sendMail(config.MAIL_INFO, error.message, "ERROR!!!");
     process.exit(1);
   }
 }
