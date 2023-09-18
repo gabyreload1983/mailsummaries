@@ -5,8 +5,6 @@ export const getBody = (debtor) => {
     <h4>Cliente: ${debtor.nombre}</h4>
     <p>El <b>saldo</b> de la cuenta es de: <strong>$${debtor.saldo}</strong></p>
     <p>Se <b>adjunta</b> resumen de cuenta.</p>
-    <strong>Tuvimos un inconveniente con el sistema a principios de agosto.</strong>
-    <p>Los comprobantes de los meses de junio, julio y primeros dias de agosto (hasta el dia 2) no van a coincidir con los resumenes anteriores</p>
     <p>Cualquier duda o consulta podes responder este mail.</p>
     <p>Saludos coordiales</p>
     <br/><br/><br/>
