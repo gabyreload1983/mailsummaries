@@ -335,7 +335,7 @@ export const getBody = (debtor) => {
                                 color: #8b8b8b;
                                 display: inline;
                               "
-                              >CBU: 0340379000379001926007
+                              >CBU: 0170296720000001151893
                             </span>
                           </p>
                         </td>
@@ -363,7 +363,7 @@ export const getBody = (debtor) => {
                                 color: #8b8b8b;
                                 display: inline;
                               "
-                              >Alias: sinapsissrl
+                              >Alias: sinapsisbbva
                             </span>
                           </p>
                         </td>
