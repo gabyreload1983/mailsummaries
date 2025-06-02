@@ -1,6 +1,6 @@
 {
   "name": "mailsummaries",
-  "version": "6.4.3",
+  "version": "6.5.3",
   "description": "Send xlsx file with account summary",
   "main": "index.js",
   "type": "module",
