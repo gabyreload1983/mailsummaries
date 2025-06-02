@@ -11,16 +11,21 @@ export const sendSummaries = async (debtors) => {
       const date = new Date().toISOString().slice(0, 10);
       const filePath = `${config.FILE_PATH_PREFIX}${date}-${debtor.codigo}.xlsx`;
       config.TESTING
-        ? await sendMail(config.MAIL_TESTING, body, subject, filePath)
-        : await sendMail(debtor.mail, body, subject, filePath);
+        ? await sendMail(config.MAIL_TESTING, null, body, subject, filePath)
+        : await sendMail(debtor.mail, null, body, subject, filePath);
       countMails += 1;
     }
     const body = `<h5>Se enviaron ${countMails} mails con sus respectivos saldos.</h5>`;
 
-    await sendMail(config.MAIL_INFO, body, "INFO SALDOS CC");
+    await sendMail(config.MAIL_INFO, null, body, "INFO SALDOS CC");
   } catch (error) {
     console.log("sendSummaries", error);
-    await sendMail(config.MAIL_INFO, error.message, "ERROR!!!");
+    await sendMail(
+      config.MAIL_INFO,
+      null,
+      error.message,
+      "ERROR - sendSummaries"
+    );
     process.exit(1);
   }
 };

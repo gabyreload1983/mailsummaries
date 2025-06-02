@@ -1,11 +1,12 @@
 {
   "name": "mailsummaries",
-  "version": "6.3.3",
+  "version": "6.4.3",
   "description": "Send xlsx file with account summary",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
+    "start": "NODE_ENV=production node app.js",
+    "dev": "NODE_ENV=development node --env-file=.env.development --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gabriel Godoy",

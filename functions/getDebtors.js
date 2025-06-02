@@ -34,7 +34,7 @@ export const getDebtors = async () => {
       - Saldo: $${customer.saldo}
       <br/>`;
     });
-    await sendMail(config.MAIL_INFO, body, "DEUDORES SIN MAIL");
+    await sendMail(config.MAIL_INFO, null, body, "DEUDORES SIN MAIL");
     console.log(
       `${new Date().toLocaleString()} - SENDING DETAILS OF ${
         withoutMail?.length
