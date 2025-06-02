@@ -1,3 +1,5 @@
+import { SINAPSIS } from "../config/constants.js";
+
 export const getBody = (debtor) => {
   return `
     <h3>ESTE ES UN MAIL AUTOMATICO.</h3>
@@ -75,7 +77,7 @@ export const getBody = (debtor) => {
                               width="200"
                               alt="image"
                               border="0"
-                              src="https://img2.gimm.io/3cdc658d-d569-4485-a486-dec07fad03f1/-/resize/506x132/img.png"
+                              src=${SINAPSIS.EMAIL_SIGN_IMAGE}
                             />
                           </p>
                         </td>

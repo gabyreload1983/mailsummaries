@@ -1,5 +1,9 @@
 node_modules
 summaries/
 docker-compose.yml
-.env
 package-lock.json
+.vscode
+.env
+.env.production
+.env.development
+.env.testing

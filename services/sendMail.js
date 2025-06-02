@@ -12,11 +12,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendMail = (mail, body, subject, filePath = "") => {
+export const sendMail = async (mail, cc, body, subject, filePath = "") => {
   return transporter.sendMail({
     from: config.MAIL_FROM,
     to: mail,
-    cc: config.MAIL_CC,
+    cc,
     subject: subject,
     html: body,
     attachments: {

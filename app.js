@@ -2,6 +2,7 @@ import { getDebtors } from "./functions/getDebtors.js";
 import { exportSummaries } from "./functions/exportSummaries.js";
 import { sendSummaries } from "./functions/sendSummaries.js";
 import config from "./config/config.js";
+import { sendMail } from "./services/sendMail.js";
 
 async function app() {
   try {
@@ -22,7 +23,12 @@ async function app() {
     process.exit(0);
   } catch (error) {
     console.log(error);
-    await sendMail(config.MAIL_INFO, error.message, "ERROR!!!");
+    await sendMail(
+      config.MAIL_INFO,
+      null,
+      error.message,
+      "ERROR-Mail Summaries"
+    );
     process.exit(1);
   }
 }
